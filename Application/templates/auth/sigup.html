@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+{% include "messages.html" %}
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-4 fw-bold lh-1 mb-3">Track Your Expenses with Ease</h1>
+                <p class="col-lg-10 fs-4">Start managing your finances efficiently with our expense tracking app. SingUp, Login or demo a user to continue</p>
+                <a href="{% url 'login' %}">
+                    <button type="button" class="btn btn-secondary mb-5" style="width: 150px; margin-right: 20px;">Login</button>
+                </a>
+                <button type="button" class="btn btn-light mb-5" style="width: 150px;">Demo user</button>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5">
+                <form class="p-4 p-md-5 border rounded-3" action="{% url 'signUp' %}" method="post"> {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First name" required>
+                        <label for="firstName">Enter your first name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
+                        <label for="email">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password"  name="password" placeholder="Password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"  required>
+                        <label for="confirmPassword">Confirm Password</label>
+                    </div>
+                    <div class="warning d-none text-danger">
+                        <ul>
+                            
+                        </ul>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-primary mt-2" id="singUpButton" type="submit">SingUp</button>
+                    <hr class="my-4">
+                    <small class="text-muted">alredy have an account yet? <a href="{% url 'login' %}"> Login </a></small>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- custom scripts-->
+    <script src="{% static 'js/authentication.js' %}"></script>
+{% endblock %}
